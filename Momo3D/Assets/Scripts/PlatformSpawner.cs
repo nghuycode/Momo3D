@@ -10,10 +10,12 @@ public class PlatformSpawner : MonoBehaviour
     public const int MAX_PLATFORM_POOL = 20;
     public Queue<Platform> PlatformObjectPool;
     public List<Platform> PlatformList;
+
+    public float OffsetLeft, OffsetRight;
     private void Awake() 
     {
         Instance = this;
-        SpawnPlatform();
+        Init();
     }
     public void Init()
     {
@@ -21,15 +23,20 @@ public class PlatformSpawner : MonoBehaviour
         PlatformList = new List<Platform>();
         for (int i = 0; i < MAX_PLATFORM_POOL; ++i)
         {
-            SpawnPlatform();
+            GameObject newPlatform = Instantiate(PlatformPrefab, this.transform);
+            newPlatform.transform.position = SpawnPosition.position;
+            newPlatform.SetActive(false);
+            PlatformObjectPool.Enqueue(newPlatform.GetComponent<Platform>());
         }
+        SpawnPlatform();
     }
     public void SpawnPlatform() 
     {
-        GameObject newPlatform = Instantiate(PlatformPrefab, this.transform);
-        // newPlatform.transform.position = SpawnPosition.position + new Vector3(Random.Range(-3, 3), 0, 0);
-        newPlatform.transform.position = SpawnPosition.position;
-        newPlatform.SetActive(false);
-        PlatformObjectPool.Enqueue(newPlatform.GetComponent<Platform>());
+        Platform newPlatform = PlatformObjectPool.Dequeue();
+        newPlatform.transform.position = SpawnPosition.position + new Vector3(Random.Range(OffsetLeft, OffsetRight), 0, 0);
+        // newPlatform.transform.position = SpawnPosition.position;
+        newPlatform.Respawn();
+        PlatformList.Add(newPlatform);
+        PlatformObjectPool.Enqueue(newPlatform);
     }
 }

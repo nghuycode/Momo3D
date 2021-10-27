@@ -27,7 +27,7 @@ public class BeatDetector : MonoBehaviour
         {
             _beatTime -= _beat;
             IsBeat = true;
-            //PlatformSpawner.Instance.SpawnPlatform();
+            PlatformSpawner.Instance.SpawnPlatform();
             Debug.Log("beat");
         }
     }
