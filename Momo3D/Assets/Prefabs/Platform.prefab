@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7149584906391890404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.5, z: 2}
+  m_LocalScale: {x: 4, y: 0.5, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -124,3 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetPosition: {x: 0, y: 0, z: 0}
+  NormalMat: {fileID: 2100000, guid: 5424d05066b078046bc9688f304088cb, type: 2}
+  TriggerMats:
+  - {fileID: 2100000, guid: 247f2bcf3ac414a4495099cd68fef008, type: 2}
+  - {fileID: 2100000, guid: 5d60cd88d829c9640abd0f716a4c48ed, type: 2}
+  - {fileID: 2100000, guid: 032f23e64ddab104ea2e1762a0f07215, type: 2}
+  - {fileID: 2100000, guid: 231992d21d24e964c8f06c80514f7027, type: 2}

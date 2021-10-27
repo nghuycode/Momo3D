@@ -5,6 +5,8 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     public Vector3 TargetPosition;
+    public Material NormalMat;
+    public Material[] TriggerMats = new Material[5];
     public void Respawn() 
     {
         this.gameObject.SetActive(true);
@@ -31,5 +33,17 @@ public class Platform : MonoBehaviour
                 this.gameObject.SetActive(false);
             }
         }
+    }
+    public void TouchByPlayer()
+    {
+        StartCoroutine(CRTouchByPlayer());
+    }
+    private IEnumerator CRTouchByPlayer() 
+    {
+        this.transform.position -= new Vector3(0, 0.5f, 0);
+        this.GetComponent<MeshRenderer>().material = TriggerMats[Random.Range(0, TriggerMats.Length)];
+        yield return new WaitForSeconds(.2f);
+        this.transform.position += new Vector3(0, 0.5f, 0);
+        this.GetComponent<MeshRenderer>().material = NormalMat;
     }
 }

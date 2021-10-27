@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Vector3 NextPlatformPosition, OriginalPosition;
     public float DistanceToNextPlatform, TimeCounter;
 
+    public Transform DieZone;
     public bool IsDrag;
     private void Start() 
     {
@@ -42,7 +43,6 @@ public class Player : MonoBehaviour
         if (IsDrag)
         {
             Vector3 mousePosition = GetWorldPositionOnPlane(Input.mousePosition, this.transform.position.z);
-            Debug.Log(mousePosition);
             newPos.x = mousePosition.x;
         }
         if (Input.GetMouseButtonUp(0))
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         }
         this.transform.position = newPos;
     }
+    
     public Vector3 GetWorldPositionOnPlane(Vector3 screenPosition, float z) 
     {
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
@@ -66,6 +67,8 @@ public class Player : MonoBehaviour
             PlatformID++;
             DistanceToNextPlatform = Vector3.Distance(this.transform.position, PlatformSpawner.Instance.PlatformList[PlatformID].transform.position);
             TimeCounter = 0;
+            other.gameObject.GetComponent<Platform>()?.TouchByPlayer();
+            GameManager.Instance.UpdateScore();
         }
     }
 }
