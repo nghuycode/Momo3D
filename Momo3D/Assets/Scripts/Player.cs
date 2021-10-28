@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         }
         this.transform.position = newPos;
     }
-    
+        
     public Vector3 GetWorldPositionOnPlane(Vector3 screenPosition, float z) 
     {
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);

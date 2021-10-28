@@ -18,7 +18,7 @@ public class PlatformSpawner : MonoBehaviour
         Init();
     }
     public void Init()
-    {
+    {       
         PlatformObjectPool = new Queue<Platform>();
         PlatformList = new List<Platform>();
         for (int i = 0; i < MAX_PLATFORM_POOL; ++i)

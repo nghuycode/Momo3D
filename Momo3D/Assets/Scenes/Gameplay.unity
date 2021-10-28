@@ -168,8 +168,8 @@ MonoBehaviour:
     type: 3}
   SpawnPosition: {fileID: 974118696}
   PlatformList: []
-  OffsetLeft: 0
-  OffsetRight: 0
+  OffsetLeft: -4
+  OffsetRight: 4
 --- !u!1 &89114870
 GameObject:
   m_ObjectHideFlags: 0
