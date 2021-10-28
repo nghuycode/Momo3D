@@ -8,11 +8,21 @@ public class BeatDetector : MonoBehaviour
     private void Awake() 
     {
         Instance = this;
+        Init();
     }
     public float BPM;
     [SerializeField]
     private float _beatTime, _beat;
     public bool IsBeat; 
+    public AudioSource MusicSource;
+    public List<MusicData> MusicDataList = new List<MusicData>();
+    private void Init() 
+    {
+        MusicData musicData = MusicDataList[Random.Range(0, MusicDataList.Count)];
+        MusicSource.clip = musicData.Music;
+        BPM = musicData.BPM;
+        MusicSource.Play();
+    }
 
     private void Update() 
     {

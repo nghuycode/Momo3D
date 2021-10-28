@@ -13,14 +13,21 @@ public class GameManager : MonoBehaviour
     private void Awake() 
     {
         Instance = this;
+        Init();
     }
     public void Init() 
     {
         Score = 0;
+        UIManager.UpdateHighScoreText(PlayerPrefs.GetInt("HighScore"));
     }
     public void UpdateScore()
     {
         Score++;
+        Debug.Log( PlayerPrefs.GetInt("HighScore"));
+        if (Score > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", Score);
+        }
         UIManager.UpdateScoreText(Score);
     }
     private void Update() 

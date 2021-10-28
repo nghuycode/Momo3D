@@ -7,6 +7,7 @@ public class Platform : MonoBehaviour
     public Vector3 TargetPosition;
     public Material NormalMat;
     public Material[] TriggerMats = new Material[5];
+    public ParticleSystem Particle;
     public void Respawn() 
     {
         this.gameObject.SetActive(true);
@@ -40,6 +41,7 @@ public class Platform : MonoBehaviour
     }
     private IEnumerator CRTouchByPlayer() 
     {
+        Particle.Play();
         this.transform.position -= new Vector3(0, 0.5f, 0);
         this.GetComponent<MeshRenderer>().material = TriggerMats[Random.Range(0, TriggerMats.Length)];
         yield return new WaitForSeconds(.2f);
