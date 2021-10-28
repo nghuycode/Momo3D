@@ -907,7 +907,10 @@ MonoBehaviour:
   IsBeat: 0
   MusicSource: {fileID: 2139178711}
   MusicDataList:
+  - {fileID: 11400000, guid: c6f94dded9ed60445832baf9565731f0, type: 2}
   - {fileID: 11400000, guid: d9e9bee8e73fcce46928c03196f885fc, type: 2}
+  - {fileID: 11400000, guid: 31e62d01fcd28574b806e068d3b0f1d4, type: 2}
+  - {fileID: 11400000, guid: 417bd84d44c88e74985545e8f2a646b7, type: 2}
 --- !u!1 &1621146576
 GameObject:
   m_ObjectHideFlags: 0
